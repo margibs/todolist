@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'TodoController@index');
+
+Route::get('/addTodo', 'TodoController@addTodo');
+
+Route::get('/todo/edit/{id}', 'TodoController@editTodo');
+
+Route::post('/todo', 'TodoController@todo');
+Route::post('/todo/{id}', 'TodoController@edit');
+
+Route::delete('/todo/{id}', 'TodoController@delete');
+

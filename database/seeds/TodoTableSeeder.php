@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TodoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-	    $this->call([
-	        UsersTableSeeder::class,
-	        TodoTableSeeder::class,
-	    ]);
+        DB::table('todos')->insert([
+            'name' => 'todo1',
+            'user_id' => '1',
+        ]);
     }
 }

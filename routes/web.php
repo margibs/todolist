@@ -23,4 +23,3 @@ Route::post('/todo', 'TodoController@todo');
 Route::post('/todo/{id}', 'TodoController@edit');
 
 Route::delete('/todo/{id}', 'TodoController@delete');
-

@@ -14,7 +14,7 @@
                             <th>Todo</th>
                             <th>Action</th>
                         </thead>
-                        @foreach($todos as $todo)
+                        @foreach($todos->todos as $todo)
                             <tr>
                                 <td>{{$todo->name}}</td>
                                 <td>

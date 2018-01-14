@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Todo;
+use App\User;
+
 
 class TodoController extends Controller
 {
@@ -16,8 +18,9 @@ class TodoController extends Controller
 
     public function index()
     {
+    	// $todos = Todo::where('user_id',Auth::id())->orderBy('created_at', 'asc')->get();
 
-    	$todos = Todo::where('user_id',Auth::id())->orderBy('created_at', 'asc')->get();
+        $todos =  User::with('todos')->find(Auth::id());
 
         return view('home',compact('todos'));
     }
@@ -30,7 +33,7 @@ class TodoController extends Controller
 
     public function editTodo($id)
     {
-    	$todo = Todo::findOrFail($id)->first();
+    	$todo = Todo::findOrFail($id);
     	$action_url = "/todo/$id";
 
     	return view('todo',compact('todo','action_url'));
@@ -83,5 +86,4 @@ class TodoController extends Controller
     	Todo::findOrFail($id)->delete();
 	    return redirect('/');
     }
-
 }
